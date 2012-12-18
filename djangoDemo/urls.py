@@ -1,8 +1,9 @@
 from django.conf.urls import patterns, include, url
-from djangoDemo.views import hello,my_homepage_view,datetime_view,hours_ahead
+from djangoDemo.views import hello,my_homepage_view,datetime_view,hours_ahead,request_test
+from django.contrib import admin
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
-# admin.autodiscover()
+admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
@@ -13,9 +14,10 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 
         ('^hello/$', hello),
+        ('^requesttest/$', request_test),
         ('^$',my_homepage_view),
         ('^datetime/$', datetime_view),
         (r'^time/plus/(\d{1,2})/$', hours_ahead),

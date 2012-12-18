@@ -19,8 +19,9 @@ from books.models import *
 #print list
 
 #order limit example
-list = Auther.objects.filter(first_name="sarow").order_by("id")
-print list
+#list = Auther.objects.filter(first_name="sarow").order_by("id")
+#print list
+
 #[0:5] is limit
 list = Auther.objects.filter(first_name="sarow").order_by("-id")[0:5]
 print list
