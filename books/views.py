@@ -11,7 +11,7 @@ from books.models import Auther
 def search_from(request):
     return render_to_response('search.html')
 
-def search(request):
+def search(request,template_name):
     
     # The following line will raise KeyError if 'q' hasn't
     # been submitted!  bad example
@@ -29,7 +29,7 @@ def search(request):
     else:
         message = 'You submitted and empty form.'
         print message
-        return render_to_response('search.html',{'error':True})
+        return render_to_response(template_name,{'error':True})
     #return render_to_response(message)
 
 
