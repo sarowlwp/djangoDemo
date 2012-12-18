@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from djangoDemo.views import hello,my_homepage_view,datetime_view,hours_ahead,request_test
 from django.contrib import admin
+from books.views import search_from,search
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 admin.autodiscover()
@@ -21,4 +22,7 @@ urlpatterns = patterns('',
         ('^$',my_homepage_view),
         ('^datetime/$', datetime_view),
         (r'^time/plus/(\d{1,2})/$', hours_ahead),
+        
+        (r'^search-form/$', search_from),
+        (r'^search-test/$', search),
 )

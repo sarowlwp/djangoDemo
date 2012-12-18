@@ -1,0 +1,14 @@
+{% extends "commons/base.html" %}
+
+{% block title %}form test{% endblock %}
+
+{% block content %}
+	{{error}}
+	{% if error %}
+		<p style="red"> Please submit a search term.</p>
+	{% endif %}
+	<form action="/search-test/" method="get">
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    </form>
+{% endblock %}

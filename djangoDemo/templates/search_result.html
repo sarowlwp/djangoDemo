@@ -1,0 +1,16 @@
+{% extends "commons/base.html" %}
+
+{% block title %}search result{% endblock %}
+
+{% block content %}
+	{% if authers %}
+		<p>Found {{ authers|length }} auther {{ auther|pluralize  }}.</p>
+		<ul>
+			{% for auther in authers %}
+				<li>{{ auther.first_name }} | {{ auther.email }} </li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<p>No books matched your search criteria.</p>
+	{% endif %}
+{% endblock %}
