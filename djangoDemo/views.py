@@ -7,6 +7,7 @@ from django.http import HttpResponse,Http404
 from django.shortcuts import render_to_response
 from django.template.loader import get_template
 from django.template import Context
+
 import datetime
 
 #first hello world
@@ -64,3 +65,19 @@ def request_test(request):
     return HttpResponse(test)
     
     
+#
+def method_splitter(request, *args,**kwargs):
+    get_view = kwargs.pop('GET',None)
+    post_view = kwargs.pop('POST',None)
+    if request.method == 'GET' and get_view is not None:
+        return get_view(request, *args,**kwargs)
+    #
+    if request.method == 'POST' and post_view is not None:
+        return post_view(request, *args,**kwargs)
+    return None
+
+def get_view(request, *args,**kwargs):
+    return HttpResponse("get")
+    
+def post_view(request, *args,**kwargs):
+    return HttpResponse("post")

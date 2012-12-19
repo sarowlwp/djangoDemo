@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
-from djangoDemo.views import hello,my_homepage_view,datetime_view,hours_ahead,request_test
+from django.conf.urls.defaults import *
+from djangoDemo import views
 from django.contrib import admin
 from books.views import search_from,search
 from django.conf import settings
@@ -44,6 +45,8 @@ if settings.DEBUG:
 #user param name replace pos
 urlpatterns += patterns('djangoDemo.views',
     (r'^time/plus/(?P<offset>\d{1,2})/$', 'hours_ahead'),
+    (r'^method_splitter/(?P<testparam1>\d{1,2})/(?P<testparam2>\d{1,2})/(\d{1,2})/$','method_splitter', {'GET': views.get_view, 'POST': views.post_view}),
+    
     #(r'^time/plus/(\d{1,2})/$', 'hours_ahead'),
     #(r'^articles/(?P<year>\d{4})/$', ''),
     #(r'^articles/(?P<year>\d{4})/(?P<month>\d{2})/$', ''),
